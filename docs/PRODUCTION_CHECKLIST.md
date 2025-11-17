@@ -140,12 +140,6 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
 
-### Docker Deployment (if applicable)
-```bash
-docker build -t collectflow-api .
-docker run -p 8000:8000 collectflow-api
-```
-
 ## 📞 SUPPORT CONTACTS
 
 - **Developer**: Salvatore Privitera

@@ -69,9 +69,6 @@ BACKUP DATABASE [nome_database] TO DISK = 'C:\backup\before_hotfix.bak'
 ### 4. STOP APPLICAZIONE
 ```bash
 # Fermare tutte le istanze dell'applicazione
-# Docker
-docker-compose down
-
 # Systemd
 sudo systemctl stop cflow-api
 
@@ -97,9 +94,6 @@ git diff HEAD~1 app/db.py
 
 ### 7. RESTART APPLICAZIONE
 ```bash
-# Docker
-docker-compose up -d
-
 # Systemd
 sudo systemctl start cflow-api
 
@@ -233,7 +227,10 @@ In caso di problemi critici durante il deployment:
 1. **Rollback immediato:**
    ```bash
    git checkout HEAD~1
-   docker-compose restart
+   # Restart con systemd
+   sudo systemctl restart cflow-api
+   # oppure con PM2
+   pm2 restart app.main:app
    ```
 
 2. **Ripristino database:**
